@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'COM ENTAO FACA FIM MOSTRE MULTIPLIQUE PONTO REPITA SE SENAO SER SOME VEZES numero varprograma : cmdscmds : cmds cmd\n            | cmdcmd : atribuicao\n           | impressao\n           | operacao\n           | repeticao\n           | condicionalatribuicao : FACA var SER numero PONTOimpressao : MOSTRE var PONTO\n                 | MOSTRE operacao PONTO\n                 | MOSTRE numero PONTOoperacao : SOME var COM var PONTO\n                | SOME var COM numero PONTO\n                | SOME numero COM var PONTO\n                | SOME numero COM numero PONTO\n                | MULTIPLIQUE var COM var PONTO\n                | MULTIPLIQUE var COM numero PONTO\n                | MULTIPLIQUE numero COM var PONTO\n                | MULTIPLIQUE numero COM numero PONTOrepeticao : REPITA numero VEZES cmds FIMcondicional : SE var ENTAO cmds FIM\n                 | SE var ENTAO cmds SENAO cmds FIM'
+_lr_signature = 'COLON COM ENTAO FACA FIM MOSTRE MULTIPLIQUE PONTO POR REPITA SE SENAO SER SOME VEZES numero varprograma : cmdscmds : cmds cmd\n            | cmdcmd : atribuicao\n           | impressao\n           | operacao\n           | repeticao\n           | condicionalatribuicao : FACA var SER numero PONTOimpressao : MOSTRE var PONTO\n                 | MOSTRE operacao PONTO\n                 | MOSTRE numero PONTOoperacao : SOME var COM var PONTO\n                | SOME var COM numero PONTO\n                | MULTIPLIQUE var POR var PONTO\n                | MULTIPLIQUE var POR numero PONTOrepeticao : REPITA numero VEZES COLON cmds FIMcondicional : SE var ENTAO cmds FIM\n                 | SE var ENTAO cmds SENAO cmds FIM'
     
-_lr_action_items = {'FACA':([0,2,3,4,5,6,7,8,15,27,28,29,34,35,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,],[9,9,-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,9,9,9,9,-9,-13,-14,-16,-15,-17,-18,-20,-19,-21,-22,9,9,-23,]),'MOSTRE':([0,2,3,4,5,6,7,8,15,27,28,29,34,35,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,],[10,10,-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,10,10,10,10,-9,-13,-14,-16,-15,-17,-18,-20,-19,-21,-22,10,10,-23,]),'SOME':([0,2,3,4,5,6,7,8,10,15,27,28,29,34,35,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,],[11,11,-3,-4,-5,-6,-7,-8,11,-2,-10,-11,-12,11,11,11,11,-9,-13,-14,-16,-15,-17,-18,-20,-19,-21,-22,11,11,-23,]),'MULTIPLIQUE':([0,2,3,4,5,6,7,8,10,15,27,28,29,34,35,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,],[12,12,-3,-4,-5,-6,-7,-8,12,-2,-10,-11,-12,12,12,12,12,-9,-13,-14,-16,-15,-17,-18,-20,-19,-21,-22,12,12,-23,]),'REPITA':([0,2,3,4,5,6,7,8,15,27,28,29,34,35,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,],[13,13,-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,13,13,13,13,-9,-13,-14,-16,-15,-17,-18,-20,-19,-21,-22,13,13,-23,]),'SE':([0,2,3,4,5,6,7,8,15,27,28,29,34,35,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,],[14,14,-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,14,14,14,14,-9,-13,-14,-16,-15,-17,-18,-20,-19,-21,-22,14,14,-23,]),'$end':([1,2,3,4,5,6,7,8,15,27,28,29,47,48,49,50,51,52,53,54,55,56,57,60,],[0,-1,-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,-9,-13,-14,-16,-15,-17,-18,-20,-19,-21,-22,-23,]),'FIM':([3,4,5,6,7,8,15,27,28,29,45,46,47,48,49,50,51,52,53,54,55,56,57,59,60,],[-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,56,57,-9,-13,-14,-16,-15,-17,-18,-20,-19,-21,-22,60,-23,]),'SENAO':([3,4,5,6,7,8,15,27,28,29,46,47,48,49,50,51,52,53,54,55,56,57,60,],[-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,58,-9,-13,-14,-16,-15,-17,-18,-20,-19,-21,-22,-23,]),'var':([9,10,11,12,14,30,31,32,33,],[16,17,20,22,25,37,40,41,44,]),'numero':([10,11,12,13,26,30,31,32,33,],[19,21,23,24,36,38,39,42,43,]),'SER':([16,],[26,]),'PONTO':([17,18,19,36,37,38,39,40,41,42,43,44,48,49,50,51,52,53,54,55,],[27,28,29,47,48,49,50,51,52,53,54,55,-13,-14,-16,-15,-17,-18,-20,-19,]),'COM':([20,21,22,23,],[30,31,32,33,]),'VEZES':([24,],[34,]),'ENTAO':([25,],[35,]),}
+_lr_action_items = {'FACA':([0,2,3,4,5,6,7,8,15,25,26,27,31,37,38,39,40,41,42,43,44,45,46,47,48,49,],[9,9,-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,9,9,9,-9,-13,-14,-15,-16,9,-18,9,-17,9,-19,]),'MOSTRE':([0,2,3,4,5,6,7,8,15,25,26,27,31,37,38,39,40,41,42,43,44,45,46,47,48,49,],[10,10,-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,10,10,10,-9,-13,-14,-15,-16,10,-18,10,-17,10,-19,]),'SOME':([0,2,3,4,5,6,7,8,10,15,25,26,27,31,37,38,39,40,41,42,43,44,45,46,47,48,49,],[11,11,-3,-4,-5,-6,-7,-8,11,-2,-10,-11,-12,11,11,11,-9,-13,-14,-15,-16,11,-18,11,-17,11,-19,]),'MULTIPLIQUE':([0,2,3,4,5,6,7,8,10,15,25,26,27,31,37,38,39,40,41,42,43,44,45,46,47,48,49,],[12,12,-3,-4,-5,-6,-7,-8,12,-2,-10,-11,-12,12,12,12,-9,-13,-14,-15,-16,12,-18,12,-17,12,-19,]),'REPITA':([0,2,3,4,5,6,7,8,15,25,26,27,31,37,38,39,40,41,42,43,44,45,46,47,48,49,],[13,13,-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,13,13,13,-9,-13,-14,-15,-16,13,-18,13,-17,13,-19,]),'SE':([0,2,3,4,5,6,7,8,15,25,26,27,31,37,38,39,40,41,42,43,44,45,46,47,48,49,],[14,14,-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,14,14,14,-9,-13,-14,-15,-16,14,-18,14,-17,14,-19,]),'$end':([1,2,3,4,5,6,7,8,15,25,26,27,39,40,41,42,43,45,47,49,],[0,-1,-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,-9,-13,-14,-15,-16,-18,-17,-19,]),'FIM':([3,4,5,6,7,8,15,25,26,27,38,39,40,41,42,43,44,45,47,48,49,],[-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,45,-9,-13,-14,-15,-16,47,-18,-17,49,-19,]),'SENAO':([3,4,5,6,7,8,15,25,26,27,38,39,40,41,42,43,45,47,49,],[-3,-4,-5,-6,-7,-8,-2,-10,-11,-12,46,-9,-13,-14,-15,-16,-18,-17,-19,]),'var':([9,10,11,12,14,28,29,],[16,17,20,21,23,33,35,]),'numero':([10,13,24,28,29,],[19,22,32,34,36,]),'SER':([16,],[24,]),'PONTO':([17,18,19,32,33,34,35,36,40,41,42,43,],[25,26,27,39,40,41,42,43,-13,-14,-15,-16,]),'COM':([20,],[28,]),'POR':([21,],[29,]),'VEZES':([22,],[30,]),'ENTAO':([23,],[31,]),'COLON':([30,],[37,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'programa':([0,],[1,]),'cmds':([0,34,35,58,],[2,45,46,59,]),'cmd':([0,2,34,35,45,46,58,59,],[3,15,3,3,15,15,3,15,]),'atribuicao':([0,2,34,35,45,46,58,59,],[4,4,4,4,4,4,4,4,]),'impressao':([0,2,34,35,45,46,58,59,],[5,5,5,5,5,5,5,5,]),'operacao':([0,2,10,34,35,45,46,58,59,],[6,6,18,6,6,6,6,6,6,]),'repeticao':([0,2,34,35,45,46,58,59,],[7,7,7,7,7,7,7,7,]),'condicional':([0,2,34,35,45,46,58,59,],[8,8,8,8,8,8,8,8,]),}
+_lr_goto_items = {'programa':([0,],[1,]),'cmds':([0,31,37,46,],[2,38,44,48,]),'cmd':([0,2,31,37,38,44,46,48,],[3,15,3,3,15,15,3,15,]),'atribuicao':([0,2,31,37,38,44,46,48,],[4,4,4,4,4,4,4,4,]),'impressao':([0,2,31,37,38,44,46,48,],[5,5,5,5,5,5,5,5,]),'operacao':([0,2,10,31,37,38,44,46,48,],[6,6,18,6,6,6,6,6,6,]),'repeticao':([0,2,31,37,38,44,46,48,],[7,7,7,7,7,7,7,7,]),'condicional':([0,2,31,37,38,44,46,48,],[8,8,8,8,8,8,8,8,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,27 +27,23 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> programa","S'",1,None,None,None),
-  ('programa -> cmds','programa',1,'p_programa','trabalho_gepeto.py',54),
-  ('cmds -> cmds cmd','cmds',2,'p_cmds','trabalho_gepeto.py',59),
-  ('cmds -> cmd','cmds',1,'p_cmds','trabalho_gepeto.py',60),
-  ('cmd -> atribuicao','cmd',1,'p_cmd','trabalho_gepeto.py',67),
-  ('cmd -> impressao','cmd',1,'p_cmd','trabalho_gepeto.py',68),
-  ('cmd -> operacao','cmd',1,'p_cmd','trabalho_gepeto.py',69),
-  ('cmd -> repeticao','cmd',1,'p_cmd','trabalho_gepeto.py',70),
-  ('cmd -> condicional','cmd',1,'p_cmd','trabalho_gepeto.py',71),
-  ('atribuicao -> FACA var SER numero PONTO','atribuicao',5,'p_atribuicao','trabalho_gepeto.py',75),
-  ('impressao -> MOSTRE var PONTO','impressao',3,'p_impressao','trabalho_gepeto.py',79),
-  ('impressao -> MOSTRE operacao PONTO','impressao',3,'p_impressao','trabalho_gepeto.py',80),
-  ('impressao -> MOSTRE numero PONTO','impressao',3,'p_impressao','trabalho_gepeto.py',81),
-  ('operacao -> SOME var COM var PONTO','operacao',5,'p_operacao','trabalho_gepeto.py',88),
-  ('operacao -> SOME var COM numero PONTO','operacao',5,'p_operacao','trabalho_gepeto.py',89),
-  ('operacao -> SOME numero COM var PONTO','operacao',5,'p_operacao','trabalho_gepeto.py',90),
-  ('operacao -> SOME numero COM numero PONTO','operacao',5,'p_operacao','trabalho_gepeto.py',91),
-  ('operacao -> MULTIPLIQUE var COM var PONTO','operacao',5,'p_operacao','trabalho_gepeto.py',92),
-  ('operacao -> MULTIPLIQUE var COM numero PONTO','operacao',5,'p_operacao','trabalho_gepeto.py',93),
-  ('operacao -> MULTIPLIQUE numero COM var PONTO','operacao',5,'p_operacao','trabalho_gepeto.py',94),
-  ('operacao -> MULTIPLIQUE numero COM numero PONTO','operacao',5,'p_operacao','trabalho_gepeto.py',95),
-  ('repeticao -> REPITA numero VEZES cmds FIM','repeticao',5,'p_repeticao','trabalho_gepeto.py',103),
-  ('condicional -> SE var ENTAO cmds FIM','condicional',5,'p_condicional','trabalho_gepeto.py',112),
-  ('condicional -> SE var ENTAO cmds SENAO cmds FIM','condicional',7,'p_condicional','trabalho_gepeto.py',113),
+  ('programa -> cmds','programa',1,'p_programa','trabalhoversaofinalagorasimtafuncionando.py',62),
+  ('cmds -> cmds cmd','cmds',2,'p_cmds','trabalhoversaofinalagorasimtafuncionando.py',68),
+  ('cmds -> cmd','cmds',1,'p_cmds','trabalhoversaofinalagorasimtafuncionando.py',69),
+  ('cmd -> atribuicao','cmd',1,'p_cmd','trabalhoversaofinalagorasimtafuncionando.py',77),
+  ('cmd -> impressao','cmd',1,'p_cmd','trabalhoversaofinalagorasimtafuncionando.py',78),
+  ('cmd -> operacao','cmd',1,'p_cmd','trabalhoversaofinalagorasimtafuncionando.py',79),
+  ('cmd -> repeticao','cmd',1,'p_cmd','trabalhoversaofinalagorasimtafuncionando.py',80),
+  ('cmd -> condicional','cmd',1,'p_cmd','trabalhoversaofinalagorasimtafuncionando.py',81),
+  ('atribuicao -> FACA var SER numero PONTO','atribuicao',5,'p_atribuicao','trabalhoversaofinalagorasimtafuncionando.py',87),
+  ('impressao -> MOSTRE var PONTO','impressao',3,'p_impressao','trabalhoversaofinalagorasimtafuncionando.py',92),
+  ('impressao -> MOSTRE operacao PONTO','impressao',3,'p_impressao','trabalhoversaofinalagorasimtafuncionando.py',93),
+  ('impressao -> MOSTRE numero PONTO','impressao',3,'p_impressao','trabalhoversaofinalagorasimtafuncionando.py',94),
+  ('operacao -> SOME var COM var PONTO','operacao',5,'p_operacao','trabalhoversaofinalagorasimtafuncionando.py',102),
+  ('operacao -> SOME var COM numero PONTO','operacao',5,'p_operacao','trabalhoversaofinalagorasimtafuncionando.py',103),
+  ('operacao -> MULTIPLIQUE var POR var PONTO','operacao',5,'p_operacao','trabalhoversaofinalagorasimtafuncionando.py',104),
+  ('operacao -> MULTIPLIQUE var POR numero PONTO','operacao',5,'p_operacao','trabalhoversaofinalagorasimtafuncionando.py',105),
+  ('repeticao -> REPITA numero VEZES COLON cmds FIM','repeticao',6,'p_repeticao','trabalhoversaofinalagorasimtafuncionando.py',114),
+  ('condicional -> SE var ENTAO cmds FIM','condicional',5,'p_condicional','trabalhoversaofinalagorasimtafuncionando.py',121),
+  ('condicional -> SE var ENTAO cmds SENAO cmds FIM','condicional',7,'p_condicional','trabalhoversaofinalagorasimtafuncionando.py',122),
 ]

@@ -3,8 +3,8 @@ from ply import lex, yacc
 
 # Definição dos tokens
 tokens = (
-    'var', 'numero', 'PONTO', 'FACA', 'SER', 'MOSTRE', 'SOME', 'COM',
-    'MULTIPLIQUE', 'REPITA', 'VEZES', 'FIM', 'SE', 'SENAO', 'ENTAO'
+    'var', 'numero', 'PONTO', 'COLON', 'FACA', 'SER', 'MOSTRE', 'SOME', 'COM',
+    'MULTIPLIQUE', 'POR', 'REPITA', 'VEZES', 'FIM', 'SE', 'SENAO', 'ENTAO'
 )
 
 # Definição das expressões regulares para os tokens
@@ -14,6 +14,7 @@ t_MOSTRE = r'MOSTRE'
 t_SOME = r'SOME'
 t_COM = r'COM'
 t_MULTIPLIQUE = r'MULTIPLIQUE'
+t_POR = r'POR'
 t_REPITA = r'REPITA'
 t_VEZES = r'VEZES'
 t_FIM = r'FIM'
@@ -21,6 +22,8 @@ t_ENTAO = r'ENTAO'
 t_SENAO = r'SENAO'
 t_SE = r'SE'
 t_PONTO = r'\.'
+t_COLON = r'\:'
+
 
 def t_var(t):
     r'[a-zA-Z_][a-zA-Z_]*'
@@ -30,16 +33,20 @@ def t_var(t):
 
     return t
 
+
 def t_numero(t):
     r'\d+'
     t.value = int(t.value)
     return t
 
+
 t_ignore = ' \t'
+
 
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
+
 
 def t_error(t):
     print(f"Erro léxico: Caracter inválido '{t.value[0]}'")
@@ -50,10 +57,12 @@ lexer = lex.lex()
 
 # Definições da gramática
 
+
 def p_programa(p):
     '''programa : cmds'''
     p[0] = '#include <stdio.h>\n\n' + 'int main(void){\n'
     p[0] += p[1] + '\n}'
+
 
 def p_cmds(p):
     '''cmds : cmds cmd
@@ -63,17 +72,21 @@ def p_cmds(p):
     else:
         p[0] = p[1] + '\n' + p[2]
 
+
 def p_cmd(p):
     '''cmd : atribuicao
            | impressao
            | operacao
            | repeticao
            | condicional'''
+    
     p[0] = p[1]
+
 
 def p_atribuicao(p):
     '''atribuicao : FACA var SER numero PONTO'''
     p[0] = f'int {p[2]} = {p[4]};'
+
 
 def p_impressao(p):
     '''impressao : MOSTRE var PONTO
@@ -84,29 +97,25 @@ def p_impressao(p):
     else:
         p[0] = f'printf("%d\\n", {p[2]});'
 
+
 def p_operacao(p):
     '''operacao : SOME var COM var PONTO
                 | SOME var COM numero PONTO
-                | SOME numero COM var PONTO
-                | SOME numero COM numero PONTO
-                | MULTIPLIQUE var COM var PONTO
-                | MULTIPLIQUE var COM numero PONTO
-                | MULTIPLIQUE numero COM var PONTO
-                | MULTIPLIQUE numero COM numero PONTO'''
+                | MULTIPLIQUE var POR var PONTO
+                | MULTIPLIQUE var POR numero PONTO'''
     if p[1] == 'SOME':
         op = '+'
     elif p[1] == 'MULTIPLIQUE':
         op = '*'
-    p[0] = f'({p[2]} {op} {p[4]})'
+    p[0] = f'{p[2]} {op}= {p[4]};'
+
 
 def p_repeticao(p):
-    '''repeticao : REPITA numero VEZES cmds FIM'''
+    '''repeticao : REPITA numero VEZES COLON cmds FIM'''
     loop = f'for(int i = 0; i < {p[2]}; i++)' + '{\n'
-    loop += p[4] + '\n}\n'
+    loop += p[5] + '\n}\n'
     p[0] = loop
 
-def p_error(p):
-    print(f"Erro de sintaxe: {p}")
 
 def p_condicional(p):
   '''condicional : SE var ENTAO cmds FIM
@@ -118,6 +127,11 @@ def p_condicional(p):
     cond += p[6] + '\n\t}'
   
   p[0] = cond
+
+
+def p_error(p):
+    print(f"Erro de sintaxe: {p}")
+
 
 # Construir o parser
 parser = yacc.yacc()

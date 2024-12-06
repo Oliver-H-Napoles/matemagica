@@ -17,40 +17,38 @@ Rule 11    impressao -> MOSTRE operacao PONTO
 Rule 12    impressao -> MOSTRE numero PONTO
 Rule 13    operacao -> SOME var COM var PONTO
 Rule 14    operacao -> SOME var COM numero PONTO
-Rule 15    operacao -> SOME numero COM var PONTO
-Rule 16    operacao -> SOME numero COM numero PONTO
-Rule 17    operacao -> MULTIPLIQUE var COM var PONTO
-Rule 18    operacao -> MULTIPLIQUE var COM numero PONTO
-Rule 19    operacao -> MULTIPLIQUE numero COM var PONTO
-Rule 20    operacao -> MULTIPLIQUE numero COM numero PONTO
-Rule 21    repeticao -> REPITA numero VEZES cmds FIM
-Rule 22    condicional -> SE var ENTAO cmds FIM
-Rule 23    condicional -> SE var ENTAO cmds SENAO cmds FIM
+Rule 15    operacao -> MULTIPLIQUE var POR var PONTO
+Rule 16    operacao -> MULTIPLIQUE var POR numero PONTO
+Rule 17    repeticao -> REPITA numero VEZES COLON cmds FIM
+Rule 18    condicional -> SE var ENTAO cmds FIM
+Rule 19    condicional -> SE var ENTAO cmds SENAO cmds FIM
 
 Terminals, with rules where they appear
 
-COM                  : 13 14 15 16 17 18 19 20
-ENTAO                : 22 23
+COLON                : 17
+COM                  : 13 14
+ENTAO                : 18 19
 FACA                 : 9
-FIM                  : 21 22 23
+FIM                  : 17 18 19
 MOSTRE               : 10 11 12
-MULTIPLIQUE          : 17 18 19 20
-PONTO                : 9 10 11 12 13 14 15 16 17 18 19 20
-REPITA               : 21
-SE                   : 22 23
-SENAO                : 23
+MULTIPLIQUE          : 15 16
+PONTO                : 9 10 11 12 13 14 15 16
+POR                  : 15 16
+REPITA               : 17
+SE                   : 18 19
+SENAO                : 19
 SER                  : 9
-SOME                 : 13 14 15 16
-VEZES                : 21
+SOME                 : 13 14
+VEZES                : 17
 error                : 
-numero               : 9 12 14 15 16 16 18 19 20 20 21
-var                  : 9 10 13 13 14 15 17 17 18 19 22 23
+numero               : 9 12 14 16 17
+var                  : 9 10 13 13 14 15 15 16 18 19
 
 Nonterminals, with rules where they appear
 
 atribuicao           : 4
 cmd                  : 2 3
-cmds                 : 1 2 21 22 23 23
+cmds                 : 1 2 17 18 19 19
 condicional          : 8
 impressao            : 5
 operacao             : 6 11
@@ -76,15 +74,11 @@ state 0
     (12) impressao -> . MOSTRE numero PONTO
     (13) operacao -> . SOME var COM var PONTO
     (14) operacao -> . SOME var COM numero PONTO
-    (15) operacao -> . SOME numero COM var PONTO
-    (16) operacao -> . SOME numero COM numero PONTO
-    (17) operacao -> . MULTIPLIQUE var COM var PONTO
-    (18) operacao -> . MULTIPLIQUE var COM numero PONTO
-    (19) operacao -> . MULTIPLIQUE numero COM var PONTO
-    (20) operacao -> . MULTIPLIQUE numero COM numero PONTO
-    (21) repeticao -> . REPITA numero VEZES cmds FIM
-    (22) condicional -> . SE var ENTAO cmds FIM
-    (23) condicional -> . SE var ENTAO cmds SENAO cmds FIM
+    (15) operacao -> . MULTIPLIQUE var POR var PONTO
+    (16) operacao -> . MULTIPLIQUE var POR numero PONTO
+    (17) repeticao -> . REPITA numero VEZES COLON cmds FIM
+    (18) condicional -> . SE var ENTAO cmds FIM
+    (19) condicional -> . SE var ENTAO cmds SENAO cmds FIM
 
     FACA            shift and go to state 9
     MOSTRE          shift and go to state 10
@@ -123,15 +117,11 @@ state 2
     (12) impressao -> . MOSTRE numero PONTO
     (13) operacao -> . SOME var COM var PONTO
     (14) operacao -> . SOME var COM numero PONTO
-    (15) operacao -> . SOME numero COM var PONTO
-    (16) operacao -> . SOME numero COM numero PONTO
-    (17) operacao -> . MULTIPLIQUE var COM var PONTO
-    (18) operacao -> . MULTIPLIQUE var COM numero PONTO
-    (19) operacao -> . MULTIPLIQUE numero COM var PONTO
-    (20) operacao -> . MULTIPLIQUE numero COM numero PONTO
-    (21) repeticao -> . REPITA numero VEZES cmds FIM
-    (22) condicional -> . SE var ENTAO cmds FIM
-    (23) condicional -> . SE var ENTAO cmds SENAO cmds FIM
+    (15) operacao -> . MULTIPLIQUE var POR var PONTO
+    (16) operacao -> . MULTIPLIQUE var POR numero PONTO
+    (17) repeticao -> . REPITA numero VEZES COLON cmds FIM
+    (18) condicional -> . SE var ENTAO cmds FIM
+    (19) condicional -> . SE var ENTAO cmds SENAO cmds FIM
 
     $end            reduce using rule 1 (programa -> cmds .)
     FACA            shift and go to state 9
@@ -252,12 +242,8 @@ state 10
     (12) impressao -> MOSTRE . numero PONTO
     (13) operacao -> . SOME var COM var PONTO
     (14) operacao -> . SOME var COM numero PONTO
-    (15) operacao -> . SOME numero COM var PONTO
-    (16) operacao -> . SOME numero COM numero PONTO
-    (17) operacao -> . MULTIPLIQUE var COM var PONTO
-    (18) operacao -> . MULTIPLIQUE var COM numero PONTO
-    (19) operacao -> . MULTIPLIQUE numero COM var PONTO
-    (20) operacao -> . MULTIPLIQUE numero COM numero PONTO
+    (15) operacao -> . MULTIPLIQUE var POR var PONTO
+    (16) operacao -> . MULTIPLIQUE var POR numero PONTO
 
     var             shift and go to state 17
     numero          shift and go to state 19
@@ -270,37 +256,31 @@ state 11
 
     (13) operacao -> SOME . var COM var PONTO
     (14) operacao -> SOME . var COM numero PONTO
-    (15) operacao -> SOME . numero COM var PONTO
-    (16) operacao -> SOME . numero COM numero PONTO
 
     var             shift and go to state 20
-    numero          shift and go to state 21
 
 
 state 12
 
-    (17) operacao -> MULTIPLIQUE . var COM var PONTO
-    (18) operacao -> MULTIPLIQUE . var COM numero PONTO
-    (19) operacao -> MULTIPLIQUE . numero COM var PONTO
-    (20) operacao -> MULTIPLIQUE . numero COM numero PONTO
+    (15) operacao -> MULTIPLIQUE . var POR var PONTO
+    (16) operacao -> MULTIPLIQUE . var POR numero PONTO
 
-    var             shift and go to state 22
-    numero          shift and go to state 23
+    var             shift and go to state 21
 
 
 state 13
 
-    (21) repeticao -> REPITA . numero VEZES cmds FIM
+    (17) repeticao -> REPITA . numero VEZES COLON cmds FIM
 
-    numero          shift and go to state 24
+    numero          shift and go to state 22
 
 
 state 14
 
-    (22) condicional -> SE . var ENTAO cmds FIM
-    (23) condicional -> SE . var ENTAO cmds SENAO cmds FIM
+    (18) condicional -> SE . var ENTAO cmds FIM
+    (19) condicional -> SE . var ENTAO cmds SENAO cmds FIM
 
-    var             shift and go to state 25
+    var             shift and go to state 23
 
 
 state 15
@@ -322,28 +302,28 @@ state 16
 
     (9) atribuicao -> FACA var . SER numero PONTO
 
-    SER             shift and go to state 26
+    SER             shift and go to state 24
 
 
 state 17
 
     (10) impressao -> MOSTRE var . PONTO
 
-    PONTO           shift and go to state 27
+    PONTO           shift and go to state 25
 
 
 state 18
 
     (11) impressao -> MOSTRE operacao . PONTO
 
-    PONTO           shift and go to state 28
+    PONTO           shift and go to state 26
 
 
 state 19
 
     (12) impressao -> MOSTRE numero . PONTO
 
-    PONTO           shift and go to state 29
+    PONTO           shift and go to state 27
 
 
 state 20
@@ -351,56 +331,40 @@ state 20
     (13) operacao -> SOME var . COM var PONTO
     (14) operacao -> SOME var . COM numero PONTO
 
-    COM             shift and go to state 30
+    COM             shift and go to state 28
 
 
 state 21
 
-    (15) operacao -> SOME numero . COM var PONTO
-    (16) operacao -> SOME numero . COM numero PONTO
+    (15) operacao -> MULTIPLIQUE var . POR var PONTO
+    (16) operacao -> MULTIPLIQUE var . POR numero PONTO
 
-    COM             shift and go to state 31
+    POR             shift and go to state 29
 
 
 state 22
 
-    (17) operacao -> MULTIPLIQUE var . COM var PONTO
-    (18) operacao -> MULTIPLIQUE var . COM numero PONTO
+    (17) repeticao -> REPITA numero . VEZES COLON cmds FIM
 
-    COM             shift and go to state 32
+    VEZES           shift and go to state 30
 
 
 state 23
 
-    (19) operacao -> MULTIPLIQUE numero . COM var PONTO
-    (20) operacao -> MULTIPLIQUE numero . COM numero PONTO
+    (18) condicional -> SE var . ENTAO cmds FIM
+    (19) condicional -> SE var . ENTAO cmds SENAO cmds FIM
 
-    COM             shift and go to state 33
+    ENTAO           shift and go to state 31
 
 
 state 24
 
-    (21) repeticao -> REPITA numero . VEZES cmds FIM
+    (9) atribuicao -> FACA var SER . numero PONTO
 
-    VEZES           shift and go to state 34
+    numero          shift and go to state 32
 
 
 state 25
-
-    (22) condicional -> SE var . ENTAO cmds FIM
-    (23) condicional -> SE var . ENTAO cmds SENAO cmds FIM
-
-    ENTAO           shift and go to state 35
-
-
-state 26
-
-    (9) atribuicao -> FACA var SER . numero PONTO
-
-    numero          shift and go to state 36
-
-
-state 27
 
     (10) impressao -> MOSTRE var PONTO .
 
@@ -415,7 +379,7 @@ state 27
     SENAO           reduce using rule 10 (impressao -> MOSTRE var PONTO .)
 
 
-state 28
+state 26
 
     (11) impressao -> MOSTRE operacao PONTO .
 
@@ -430,7 +394,7 @@ state 28
     SENAO           reduce using rule 11 (impressao -> MOSTRE operacao PONTO .)
 
 
-state 29
+state 27
 
     (12) impressao -> MOSTRE numero PONTO .
 
@@ -445,271 +409,180 @@ state 29
     SENAO           reduce using rule 12 (impressao -> MOSTRE numero PONTO .)
 
 
-state 30
+state 28
 
     (13) operacao -> SOME var COM . var PONTO
     (14) operacao -> SOME var COM . numero PONTO
 
-    var             shift and go to state 37
-    numero          shift and go to state 38
+    var             shift and go to state 33
+    numero          shift and go to state 34
+
+
+state 29
+
+    (15) operacao -> MULTIPLIQUE var POR . var PONTO
+    (16) operacao -> MULTIPLIQUE var POR . numero PONTO
+
+    var             shift and go to state 35
+    numero          shift and go to state 36
+
+
+state 30
+
+    (17) repeticao -> REPITA numero VEZES . COLON cmds FIM
+
+    COLON           shift and go to state 37
 
 
 state 31
 
-    (15) operacao -> SOME numero COM . var PONTO
-    (16) operacao -> SOME numero COM . numero PONTO
+    (18) condicional -> SE var ENTAO . cmds FIM
+    (19) condicional -> SE var ENTAO . cmds SENAO cmds FIM
+    (2) cmds -> . cmds cmd
+    (3) cmds -> . cmd
+    (4) cmd -> . atribuicao
+    (5) cmd -> . impressao
+    (6) cmd -> . operacao
+    (7) cmd -> . repeticao
+    (8) cmd -> . condicional
+    (9) atribuicao -> . FACA var SER numero PONTO
+    (10) impressao -> . MOSTRE var PONTO
+    (11) impressao -> . MOSTRE operacao PONTO
+    (12) impressao -> . MOSTRE numero PONTO
+    (13) operacao -> . SOME var COM var PONTO
+    (14) operacao -> . SOME var COM numero PONTO
+    (15) operacao -> . MULTIPLIQUE var POR var PONTO
+    (16) operacao -> . MULTIPLIQUE var POR numero PONTO
+    (17) repeticao -> . REPITA numero VEZES COLON cmds FIM
+    (18) condicional -> . SE var ENTAO cmds FIM
+    (19) condicional -> . SE var ENTAO cmds SENAO cmds FIM
 
-    var             shift and go to state 40
-    numero          shift and go to state 39
+    FACA            shift and go to state 9
+    MOSTRE          shift and go to state 10
+    SOME            shift and go to state 11
+    MULTIPLIQUE     shift and go to state 12
+    REPITA          shift and go to state 13
+    SE              shift and go to state 14
 
+    cmds                           shift and go to state 38
+    cmd                            shift and go to state 3
+    atribuicao                     shift and go to state 4
+    impressao                      shift and go to state 5
+    operacao                       shift and go to state 6
+    repeticao                      shift and go to state 7
+    condicional                    shift and go to state 8
 
 state 32
 
-    (17) operacao -> MULTIPLIQUE var COM . var PONTO
-    (18) operacao -> MULTIPLIQUE var COM . numero PONTO
+    (9) atribuicao -> FACA var SER numero . PONTO
 
-    var             shift and go to state 41
-    numero          shift and go to state 42
+    PONTO           shift and go to state 39
 
 
 state 33
 
-    (19) operacao -> MULTIPLIQUE numero COM . var PONTO
-    (20) operacao -> MULTIPLIQUE numero COM . numero PONTO
+    (13) operacao -> SOME var COM var . PONTO
 
-    var             shift and go to state 44
-    numero          shift and go to state 43
+    PONTO           shift and go to state 40
 
 
 state 34
 
-    (21) repeticao -> REPITA numero VEZES . cmds FIM
-    (2) cmds -> . cmds cmd
-    (3) cmds -> . cmd
-    (4) cmd -> . atribuicao
-    (5) cmd -> . impressao
-    (6) cmd -> . operacao
-    (7) cmd -> . repeticao
-    (8) cmd -> . condicional
-    (9) atribuicao -> . FACA var SER numero PONTO
-    (10) impressao -> . MOSTRE var PONTO
-    (11) impressao -> . MOSTRE operacao PONTO
-    (12) impressao -> . MOSTRE numero PONTO
-    (13) operacao -> . SOME var COM var PONTO
-    (14) operacao -> . SOME var COM numero PONTO
-    (15) operacao -> . SOME numero COM var PONTO
-    (16) operacao -> . SOME numero COM numero PONTO
-    (17) operacao -> . MULTIPLIQUE var COM var PONTO
-    (18) operacao -> . MULTIPLIQUE var COM numero PONTO
-    (19) operacao -> . MULTIPLIQUE numero COM var PONTO
-    (20) operacao -> . MULTIPLIQUE numero COM numero PONTO
-    (21) repeticao -> . REPITA numero VEZES cmds FIM
-    (22) condicional -> . SE var ENTAO cmds FIM
-    (23) condicional -> . SE var ENTAO cmds SENAO cmds FIM
+    (14) operacao -> SOME var COM numero . PONTO
 
-    FACA            shift and go to state 9
-    MOSTRE          shift and go to state 10
-    SOME            shift and go to state 11
-    MULTIPLIQUE     shift and go to state 12
-    REPITA          shift and go to state 13
-    SE              shift and go to state 14
+    PONTO           shift and go to state 41
 
-    cmds                           shift and go to state 45
-    cmd                            shift and go to state 3
-    atribuicao                     shift and go to state 4
-    impressao                      shift and go to state 5
-    operacao                       shift and go to state 6
-    repeticao                      shift and go to state 7
-    condicional                    shift and go to state 8
 
 state 35
 
-    (22) condicional -> SE var ENTAO . cmds FIM
-    (23) condicional -> SE var ENTAO . cmds SENAO cmds FIM
-    (2) cmds -> . cmds cmd
-    (3) cmds -> . cmd
-    (4) cmd -> . atribuicao
-    (5) cmd -> . impressao
-    (6) cmd -> . operacao
-    (7) cmd -> . repeticao
-    (8) cmd -> . condicional
-    (9) atribuicao -> . FACA var SER numero PONTO
-    (10) impressao -> . MOSTRE var PONTO
-    (11) impressao -> . MOSTRE operacao PONTO
-    (12) impressao -> . MOSTRE numero PONTO
-    (13) operacao -> . SOME var COM var PONTO
-    (14) operacao -> . SOME var COM numero PONTO
-    (15) operacao -> . SOME numero COM var PONTO
-    (16) operacao -> . SOME numero COM numero PONTO
-    (17) operacao -> . MULTIPLIQUE var COM var PONTO
-    (18) operacao -> . MULTIPLIQUE var COM numero PONTO
-    (19) operacao -> . MULTIPLIQUE numero COM var PONTO
-    (20) operacao -> . MULTIPLIQUE numero COM numero PONTO
-    (21) repeticao -> . REPITA numero VEZES cmds FIM
-    (22) condicional -> . SE var ENTAO cmds FIM
-    (23) condicional -> . SE var ENTAO cmds SENAO cmds FIM
+    (15) operacao -> MULTIPLIQUE var POR var . PONTO
 
-    FACA            shift and go to state 9
-    MOSTRE          shift and go to state 10
-    SOME            shift and go to state 11
-    MULTIPLIQUE     shift and go to state 12
-    REPITA          shift and go to state 13
-    SE              shift and go to state 14
+    PONTO           shift and go to state 42
 
-    cmds                           shift and go to state 46
-    cmd                            shift and go to state 3
-    atribuicao                     shift and go to state 4
-    impressao                      shift and go to state 5
-    operacao                       shift and go to state 6
-    repeticao                      shift and go to state 7
-    condicional                    shift and go to state 8
 
 state 36
 
-    (9) atribuicao -> FACA var SER numero . PONTO
+    (16) operacao -> MULTIPLIQUE var POR numero . PONTO
 
-    PONTO           shift and go to state 47
+    PONTO           shift and go to state 43
 
 
 state 37
 
-    (13) operacao -> SOME var COM var . PONTO
+    (17) repeticao -> REPITA numero VEZES COLON . cmds FIM
+    (2) cmds -> . cmds cmd
+    (3) cmds -> . cmd
+    (4) cmd -> . atribuicao
+    (5) cmd -> . impressao
+    (6) cmd -> . operacao
+    (7) cmd -> . repeticao
+    (8) cmd -> . condicional
+    (9) atribuicao -> . FACA var SER numero PONTO
+    (10) impressao -> . MOSTRE var PONTO
+    (11) impressao -> . MOSTRE operacao PONTO
+    (12) impressao -> . MOSTRE numero PONTO
+    (13) operacao -> . SOME var COM var PONTO
+    (14) operacao -> . SOME var COM numero PONTO
+    (15) operacao -> . MULTIPLIQUE var POR var PONTO
+    (16) operacao -> . MULTIPLIQUE var POR numero PONTO
+    (17) repeticao -> . REPITA numero VEZES COLON cmds FIM
+    (18) condicional -> . SE var ENTAO cmds FIM
+    (19) condicional -> . SE var ENTAO cmds SENAO cmds FIM
 
-    PONTO           shift and go to state 48
+    FACA            shift and go to state 9
+    MOSTRE          shift and go to state 10
+    SOME            shift and go to state 11
+    MULTIPLIQUE     shift and go to state 12
+    REPITA          shift and go to state 13
+    SE              shift and go to state 14
 
+    cmds                           shift and go to state 44
+    cmd                            shift and go to state 3
+    atribuicao                     shift and go to state 4
+    impressao                      shift and go to state 5
+    operacao                       shift and go to state 6
+    repeticao                      shift and go to state 7
+    condicional                    shift and go to state 8
 
 state 38
 
-    (14) operacao -> SOME var COM numero . PONTO
+    (18) condicional -> SE var ENTAO cmds . FIM
+    (19) condicional -> SE var ENTAO cmds . SENAO cmds FIM
+    (2) cmds -> cmds . cmd
+    (4) cmd -> . atribuicao
+    (5) cmd -> . impressao
+    (6) cmd -> . operacao
+    (7) cmd -> . repeticao
+    (8) cmd -> . condicional
+    (9) atribuicao -> . FACA var SER numero PONTO
+    (10) impressao -> . MOSTRE var PONTO
+    (11) impressao -> . MOSTRE operacao PONTO
+    (12) impressao -> . MOSTRE numero PONTO
+    (13) operacao -> . SOME var COM var PONTO
+    (14) operacao -> . SOME var COM numero PONTO
+    (15) operacao -> . MULTIPLIQUE var POR var PONTO
+    (16) operacao -> . MULTIPLIQUE var POR numero PONTO
+    (17) repeticao -> . REPITA numero VEZES COLON cmds FIM
+    (18) condicional -> . SE var ENTAO cmds FIM
+    (19) condicional -> . SE var ENTAO cmds SENAO cmds FIM
 
-    PONTO           shift and go to state 49
+    FIM             shift and go to state 45
+    SENAO           shift and go to state 46
+    FACA            shift and go to state 9
+    MOSTRE          shift and go to state 10
+    SOME            shift and go to state 11
+    MULTIPLIQUE     shift and go to state 12
+    REPITA          shift and go to state 13
+    SE              shift and go to state 14
 
+    cmd                            shift and go to state 15
+    atribuicao                     shift and go to state 4
+    impressao                      shift and go to state 5
+    operacao                       shift and go to state 6
+    repeticao                      shift and go to state 7
+    condicional                    shift and go to state 8
 
 state 39
-
-    (16) operacao -> SOME numero COM numero . PONTO
-
-    PONTO           shift and go to state 50
-
-
-state 40
-
-    (15) operacao -> SOME numero COM var . PONTO
-
-    PONTO           shift and go to state 51
-
-
-state 41
-
-    (17) operacao -> MULTIPLIQUE var COM var . PONTO
-
-    PONTO           shift and go to state 52
-
-
-state 42
-
-    (18) operacao -> MULTIPLIQUE var COM numero . PONTO
-
-    PONTO           shift and go to state 53
-
-
-state 43
-
-    (20) operacao -> MULTIPLIQUE numero COM numero . PONTO
-
-    PONTO           shift and go to state 54
-
-
-state 44
-
-    (19) operacao -> MULTIPLIQUE numero COM var . PONTO
-
-    PONTO           shift and go to state 55
-
-
-state 45
-
-    (21) repeticao -> REPITA numero VEZES cmds . FIM
-    (2) cmds -> cmds . cmd
-    (4) cmd -> . atribuicao
-    (5) cmd -> . impressao
-    (6) cmd -> . operacao
-    (7) cmd -> . repeticao
-    (8) cmd -> . condicional
-    (9) atribuicao -> . FACA var SER numero PONTO
-    (10) impressao -> . MOSTRE var PONTO
-    (11) impressao -> . MOSTRE operacao PONTO
-    (12) impressao -> . MOSTRE numero PONTO
-    (13) operacao -> . SOME var COM var PONTO
-    (14) operacao -> . SOME var COM numero PONTO
-    (15) operacao -> . SOME numero COM var PONTO
-    (16) operacao -> . SOME numero COM numero PONTO
-    (17) operacao -> . MULTIPLIQUE var COM var PONTO
-    (18) operacao -> . MULTIPLIQUE var COM numero PONTO
-    (19) operacao -> . MULTIPLIQUE numero COM var PONTO
-    (20) operacao -> . MULTIPLIQUE numero COM numero PONTO
-    (21) repeticao -> . REPITA numero VEZES cmds FIM
-    (22) condicional -> . SE var ENTAO cmds FIM
-    (23) condicional -> . SE var ENTAO cmds SENAO cmds FIM
-
-    FIM             shift and go to state 56
-    FACA            shift and go to state 9
-    MOSTRE          shift and go to state 10
-    SOME            shift and go to state 11
-    MULTIPLIQUE     shift and go to state 12
-    REPITA          shift and go to state 13
-    SE              shift and go to state 14
-
-    cmd                            shift and go to state 15
-    atribuicao                     shift and go to state 4
-    impressao                      shift and go to state 5
-    operacao                       shift and go to state 6
-    repeticao                      shift and go to state 7
-    condicional                    shift and go to state 8
-
-state 46
-
-    (22) condicional -> SE var ENTAO cmds . FIM
-    (23) condicional -> SE var ENTAO cmds . SENAO cmds FIM
-    (2) cmds -> cmds . cmd
-    (4) cmd -> . atribuicao
-    (5) cmd -> . impressao
-    (6) cmd -> . operacao
-    (7) cmd -> . repeticao
-    (8) cmd -> . condicional
-    (9) atribuicao -> . FACA var SER numero PONTO
-    (10) impressao -> . MOSTRE var PONTO
-    (11) impressao -> . MOSTRE operacao PONTO
-    (12) impressao -> . MOSTRE numero PONTO
-    (13) operacao -> . SOME var COM var PONTO
-    (14) operacao -> . SOME var COM numero PONTO
-    (15) operacao -> . SOME numero COM var PONTO
-    (16) operacao -> . SOME numero COM numero PONTO
-    (17) operacao -> . MULTIPLIQUE var COM var PONTO
-    (18) operacao -> . MULTIPLIQUE var COM numero PONTO
-    (19) operacao -> . MULTIPLIQUE numero COM var PONTO
-    (20) operacao -> . MULTIPLIQUE numero COM numero PONTO
-    (21) repeticao -> . REPITA numero VEZES cmds FIM
-    (22) condicional -> . SE var ENTAO cmds FIM
-    (23) condicional -> . SE var ENTAO cmds SENAO cmds FIM
-
-    FIM             shift and go to state 57
-    SENAO           shift and go to state 58
-    FACA            shift and go to state 9
-    MOSTRE          shift and go to state 10
-    SOME            shift and go to state 11
-    MULTIPLIQUE     shift and go to state 12
-    REPITA          shift and go to state 13
-    SE              shift and go to state 14
-
-    cmd                            shift and go to state 15
-    atribuicao                     shift and go to state 4
-    impressao                      shift and go to state 5
-    operacao                       shift and go to state 6
-    repeticao                      shift and go to state 7
-    condicional                    shift and go to state 8
-
-state 47
 
     (9) atribuicao -> FACA var SER numero PONTO .
 
@@ -724,7 +597,7 @@ state 47
     SENAO           reduce using rule 9 (atribuicao -> FACA var SER numero PONTO .)
 
 
-state 48
+state 40
 
     (13) operacao -> SOME var COM var PONTO .
 
@@ -740,7 +613,7 @@ state 48
     SENAO           reduce using rule 13 (operacao -> SOME var COM var PONTO .)
 
 
-state 49
+state 41
 
     (14) operacao -> SOME var COM numero PONTO .
 
@@ -756,176 +629,41 @@ state 49
     SENAO           reduce using rule 14 (operacao -> SOME var COM numero PONTO .)
 
 
-state 50
+state 42
 
-    (16) operacao -> SOME numero COM numero PONTO .
+    (15) operacao -> MULTIPLIQUE var POR var PONTO .
 
-    FACA            reduce using rule 16 (operacao -> SOME numero COM numero PONTO .)
-    MOSTRE          reduce using rule 16 (operacao -> SOME numero COM numero PONTO .)
-    SOME            reduce using rule 16 (operacao -> SOME numero COM numero PONTO .)
-    MULTIPLIQUE     reduce using rule 16 (operacao -> SOME numero COM numero PONTO .)
-    REPITA          reduce using rule 16 (operacao -> SOME numero COM numero PONTO .)
-    SE              reduce using rule 16 (operacao -> SOME numero COM numero PONTO .)
-    $end            reduce using rule 16 (operacao -> SOME numero COM numero PONTO .)
-    PONTO           reduce using rule 16 (operacao -> SOME numero COM numero PONTO .)
-    FIM             reduce using rule 16 (operacao -> SOME numero COM numero PONTO .)
-    SENAO           reduce using rule 16 (operacao -> SOME numero COM numero PONTO .)
-
-
-state 51
-
-    (15) operacao -> SOME numero COM var PONTO .
-
-    FACA            reduce using rule 15 (operacao -> SOME numero COM var PONTO .)
-    MOSTRE          reduce using rule 15 (operacao -> SOME numero COM var PONTO .)
-    SOME            reduce using rule 15 (operacao -> SOME numero COM var PONTO .)
-    MULTIPLIQUE     reduce using rule 15 (operacao -> SOME numero COM var PONTO .)
-    REPITA          reduce using rule 15 (operacao -> SOME numero COM var PONTO .)
-    SE              reduce using rule 15 (operacao -> SOME numero COM var PONTO .)
-    $end            reduce using rule 15 (operacao -> SOME numero COM var PONTO .)
-    PONTO           reduce using rule 15 (operacao -> SOME numero COM var PONTO .)
-    FIM             reduce using rule 15 (operacao -> SOME numero COM var PONTO .)
-    SENAO           reduce using rule 15 (operacao -> SOME numero COM var PONTO .)
+    FACA            reduce using rule 15 (operacao -> MULTIPLIQUE var POR var PONTO .)
+    MOSTRE          reduce using rule 15 (operacao -> MULTIPLIQUE var POR var PONTO .)
+    SOME            reduce using rule 15 (operacao -> MULTIPLIQUE var POR var PONTO .)
+    MULTIPLIQUE     reduce using rule 15 (operacao -> MULTIPLIQUE var POR var PONTO .)
+    REPITA          reduce using rule 15 (operacao -> MULTIPLIQUE var POR var PONTO .)
+    SE              reduce using rule 15 (operacao -> MULTIPLIQUE var POR var PONTO .)
+    $end            reduce using rule 15 (operacao -> MULTIPLIQUE var POR var PONTO .)
+    PONTO           reduce using rule 15 (operacao -> MULTIPLIQUE var POR var PONTO .)
+    FIM             reduce using rule 15 (operacao -> MULTIPLIQUE var POR var PONTO .)
+    SENAO           reduce using rule 15 (operacao -> MULTIPLIQUE var POR var PONTO .)
 
 
-state 52
+state 43
 
-    (17) operacao -> MULTIPLIQUE var COM var PONTO .
+    (16) operacao -> MULTIPLIQUE var POR numero PONTO .
 
-    FACA            reduce using rule 17 (operacao -> MULTIPLIQUE var COM var PONTO .)
-    MOSTRE          reduce using rule 17 (operacao -> MULTIPLIQUE var COM var PONTO .)
-    SOME            reduce using rule 17 (operacao -> MULTIPLIQUE var COM var PONTO .)
-    MULTIPLIQUE     reduce using rule 17 (operacao -> MULTIPLIQUE var COM var PONTO .)
-    REPITA          reduce using rule 17 (operacao -> MULTIPLIQUE var COM var PONTO .)
-    SE              reduce using rule 17 (operacao -> MULTIPLIQUE var COM var PONTO .)
-    $end            reduce using rule 17 (operacao -> MULTIPLIQUE var COM var PONTO .)
-    PONTO           reduce using rule 17 (operacao -> MULTIPLIQUE var COM var PONTO .)
-    FIM             reduce using rule 17 (operacao -> MULTIPLIQUE var COM var PONTO .)
-    SENAO           reduce using rule 17 (operacao -> MULTIPLIQUE var COM var PONTO .)
-
-
-state 53
-
-    (18) operacao -> MULTIPLIQUE var COM numero PONTO .
-
-    FACA            reduce using rule 18 (operacao -> MULTIPLIQUE var COM numero PONTO .)
-    MOSTRE          reduce using rule 18 (operacao -> MULTIPLIQUE var COM numero PONTO .)
-    SOME            reduce using rule 18 (operacao -> MULTIPLIQUE var COM numero PONTO .)
-    MULTIPLIQUE     reduce using rule 18 (operacao -> MULTIPLIQUE var COM numero PONTO .)
-    REPITA          reduce using rule 18 (operacao -> MULTIPLIQUE var COM numero PONTO .)
-    SE              reduce using rule 18 (operacao -> MULTIPLIQUE var COM numero PONTO .)
-    $end            reduce using rule 18 (operacao -> MULTIPLIQUE var COM numero PONTO .)
-    PONTO           reduce using rule 18 (operacao -> MULTIPLIQUE var COM numero PONTO .)
-    FIM             reduce using rule 18 (operacao -> MULTIPLIQUE var COM numero PONTO .)
-    SENAO           reduce using rule 18 (operacao -> MULTIPLIQUE var COM numero PONTO .)
+    FACA            reduce using rule 16 (operacao -> MULTIPLIQUE var POR numero PONTO .)
+    MOSTRE          reduce using rule 16 (operacao -> MULTIPLIQUE var POR numero PONTO .)
+    SOME            reduce using rule 16 (operacao -> MULTIPLIQUE var POR numero PONTO .)
+    MULTIPLIQUE     reduce using rule 16 (operacao -> MULTIPLIQUE var POR numero PONTO .)
+    REPITA          reduce using rule 16 (operacao -> MULTIPLIQUE var POR numero PONTO .)
+    SE              reduce using rule 16 (operacao -> MULTIPLIQUE var POR numero PONTO .)
+    $end            reduce using rule 16 (operacao -> MULTIPLIQUE var POR numero PONTO .)
+    PONTO           reduce using rule 16 (operacao -> MULTIPLIQUE var POR numero PONTO .)
+    FIM             reduce using rule 16 (operacao -> MULTIPLIQUE var POR numero PONTO .)
+    SENAO           reduce using rule 16 (operacao -> MULTIPLIQUE var POR numero PONTO .)
 
 
-state 54
+state 44
 
-    (20) operacao -> MULTIPLIQUE numero COM numero PONTO .
-
-    FACA            reduce using rule 20 (operacao -> MULTIPLIQUE numero COM numero PONTO .)
-    MOSTRE          reduce using rule 20 (operacao -> MULTIPLIQUE numero COM numero PONTO .)
-    SOME            reduce using rule 20 (operacao -> MULTIPLIQUE numero COM numero PONTO .)
-    MULTIPLIQUE     reduce using rule 20 (operacao -> MULTIPLIQUE numero COM numero PONTO .)
-    REPITA          reduce using rule 20 (operacao -> MULTIPLIQUE numero COM numero PONTO .)
-    SE              reduce using rule 20 (operacao -> MULTIPLIQUE numero COM numero PONTO .)
-    $end            reduce using rule 20 (operacao -> MULTIPLIQUE numero COM numero PONTO .)
-    PONTO           reduce using rule 20 (operacao -> MULTIPLIQUE numero COM numero PONTO .)
-    FIM             reduce using rule 20 (operacao -> MULTIPLIQUE numero COM numero PONTO .)
-    SENAO           reduce using rule 20 (operacao -> MULTIPLIQUE numero COM numero PONTO .)
-
-
-state 55
-
-    (19) operacao -> MULTIPLIQUE numero COM var PONTO .
-
-    FACA            reduce using rule 19 (operacao -> MULTIPLIQUE numero COM var PONTO .)
-    MOSTRE          reduce using rule 19 (operacao -> MULTIPLIQUE numero COM var PONTO .)
-    SOME            reduce using rule 19 (operacao -> MULTIPLIQUE numero COM var PONTO .)
-    MULTIPLIQUE     reduce using rule 19 (operacao -> MULTIPLIQUE numero COM var PONTO .)
-    REPITA          reduce using rule 19 (operacao -> MULTIPLIQUE numero COM var PONTO .)
-    SE              reduce using rule 19 (operacao -> MULTIPLIQUE numero COM var PONTO .)
-    $end            reduce using rule 19 (operacao -> MULTIPLIQUE numero COM var PONTO .)
-    PONTO           reduce using rule 19 (operacao -> MULTIPLIQUE numero COM var PONTO .)
-    FIM             reduce using rule 19 (operacao -> MULTIPLIQUE numero COM var PONTO .)
-    SENAO           reduce using rule 19 (operacao -> MULTIPLIQUE numero COM var PONTO .)
-
-
-state 56
-
-    (21) repeticao -> REPITA numero VEZES cmds FIM .
-
-    FACA            reduce using rule 21 (repeticao -> REPITA numero VEZES cmds FIM .)
-    MOSTRE          reduce using rule 21 (repeticao -> REPITA numero VEZES cmds FIM .)
-    SOME            reduce using rule 21 (repeticao -> REPITA numero VEZES cmds FIM .)
-    MULTIPLIQUE     reduce using rule 21 (repeticao -> REPITA numero VEZES cmds FIM .)
-    REPITA          reduce using rule 21 (repeticao -> REPITA numero VEZES cmds FIM .)
-    SE              reduce using rule 21 (repeticao -> REPITA numero VEZES cmds FIM .)
-    $end            reduce using rule 21 (repeticao -> REPITA numero VEZES cmds FIM .)
-    FIM             reduce using rule 21 (repeticao -> REPITA numero VEZES cmds FIM .)
-    SENAO           reduce using rule 21 (repeticao -> REPITA numero VEZES cmds FIM .)
-
-
-state 57
-
-    (22) condicional -> SE var ENTAO cmds FIM .
-
-    FACA            reduce using rule 22 (condicional -> SE var ENTAO cmds FIM .)
-    MOSTRE          reduce using rule 22 (condicional -> SE var ENTAO cmds FIM .)
-    SOME            reduce using rule 22 (condicional -> SE var ENTAO cmds FIM .)
-    MULTIPLIQUE     reduce using rule 22 (condicional -> SE var ENTAO cmds FIM .)
-    REPITA          reduce using rule 22 (condicional -> SE var ENTAO cmds FIM .)
-    SE              reduce using rule 22 (condicional -> SE var ENTAO cmds FIM .)
-    $end            reduce using rule 22 (condicional -> SE var ENTAO cmds FIM .)
-    FIM             reduce using rule 22 (condicional -> SE var ENTAO cmds FIM .)
-    SENAO           reduce using rule 22 (condicional -> SE var ENTAO cmds FIM .)
-
-
-state 58
-
-    (23) condicional -> SE var ENTAO cmds SENAO . cmds FIM
-    (2) cmds -> . cmds cmd
-    (3) cmds -> . cmd
-    (4) cmd -> . atribuicao
-    (5) cmd -> . impressao
-    (6) cmd -> . operacao
-    (7) cmd -> . repeticao
-    (8) cmd -> . condicional
-    (9) atribuicao -> . FACA var SER numero PONTO
-    (10) impressao -> . MOSTRE var PONTO
-    (11) impressao -> . MOSTRE operacao PONTO
-    (12) impressao -> . MOSTRE numero PONTO
-    (13) operacao -> . SOME var COM var PONTO
-    (14) operacao -> . SOME var COM numero PONTO
-    (15) operacao -> . SOME numero COM var PONTO
-    (16) operacao -> . SOME numero COM numero PONTO
-    (17) operacao -> . MULTIPLIQUE var COM var PONTO
-    (18) operacao -> . MULTIPLIQUE var COM numero PONTO
-    (19) operacao -> . MULTIPLIQUE numero COM var PONTO
-    (20) operacao -> . MULTIPLIQUE numero COM numero PONTO
-    (21) repeticao -> . REPITA numero VEZES cmds FIM
-    (22) condicional -> . SE var ENTAO cmds FIM
-    (23) condicional -> . SE var ENTAO cmds SENAO cmds FIM
-
-    FACA            shift and go to state 9
-    MOSTRE          shift and go to state 10
-    SOME            shift and go to state 11
-    MULTIPLIQUE     shift and go to state 12
-    REPITA          shift and go to state 13
-    SE              shift and go to state 14
-
-    cmds                           shift and go to state 59
-    cmd                            shift and go to state 3
-    atribuicao                     shift and go to state 4
-    impressao                      shift and go to state 5
-    operacao                       shift and go to state 6
-    repeticao                      shift and go to state 7
-    condicional                    shift and go to state 8
-
-state 59
-
-    (23) condicional -> SE var ENTAO cmds SENAO cmds . FIM
+    (17) repeticao -> REPITA numero VEZES COLON cmds . FIM
     (2) cmds -> cmds . cmd
     (4) cmd -> . atribuicao
     (5) cmd -> . impressao
@@ -938,17 +676,13 @@ state 59
     (12) impressao -> . MOSTRE numero PONTO
     (13) operacao -> . SOME var COM var PONTO
     (14) operacao -> . SOME var COM numero PONTO
-    (15) operacao -> . SOME numero COM var PONTO
-    (16) operacao -> . SOME numero COM numero PONTO
-    (17) operacao -> . MULTIPLIQUE var COM var PONTO
-    (18) operacao -> . MULTIPLIQUE var COM numero PONTO
-    (19) operacao -> . MULTIPLIQUE numero COM var PONTO
-    (20) operacao -> . MULTIPLIQUE numero COM numero PONTO
-    (21) repeticao -> . REPITA numero VEZES cmds FIM
-    (22) condicional -> . SE var ENTAO cmds FIM
-    (23) condicional -> . SE var ENTAO cmds SENAO cmds FIM
+    (15) operacao -> . MULTIPLIQUE var POR var PONTO
+    (16) operacao -> . MULTIPLIQUE var POR numero PONTO
+    (17) repeticao -> . REPITA numero VEZES COLON cmds FIM
+    (18) condicional -> . SE var ENTAO cmds FIM
+    (19) condicional -> . SE var ENTAO cmds SENAO cmds FIM
 
-    FIM             shift and go to state 60
+    FIM             shift and go to state 47
     FACA            shift and go to state 9
     MOSTRE          shift and go to state 10
     SOME            shift and go to state 11
@@ -963,17 +697,120 @@ state 59
     repeticao                      shift and go to state 7
     condicional                    shift and go to state 8
 
-state 60
+state 45
 
-    (23) condicional -> SE var ENTAO cmds SENAO cmds FIM .
+    (18) condicional -> SE var ENTAO cmds FIM .
 
-    FACA            reduce using rule 23 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
-    MOSTRE          reduce using rule 23 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
-    SOME            reduce using rule 23 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
-    MULTIPLIQUE     reduce using rule 23 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
-    REPITA          reduce using rule 23 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
-    SE              reduce using rule 23 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
-    $end            reduce using rule 23 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
-    FIM             reduce using rule 23 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
-    SENAO           reduce using rule 23 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
+    FACA            reduce using rule 18 (condicional -> SE var ENTAO cmds FIM .)
+    MOSTRE          reduce using rule 18 (condicional -> SE var ENTAO cmds FIM .)
+    SOME            reduce using rule 18 (condicional -> SE var ENTAO cmds FIM .)
+    MULTIPLIQUE     reduce using rule 18 (condicional -> SE var ENTAO cmds FIM .)
+    REPITA          reduce using rule 18 (condicional -> SE var ENTAO cmds FIM .)
+    SE              reduce using rule 18 (condicional -> SE var ENTAO cmds FIM .)
+    $end            reduce using rule 18 (condicional -> SE var ENTAO cmds FIM .)
+    FIM             reduce using rule 18 (condicional -> SE var ENTAO cmds FIM .)
+    SENAO           reduce using rule 18 (condicional -> SE var ENTAO cmds FIM .)
+
+
+state 46
+
+    (19) condicional -> SE var ENTAO cmds SENAO . cmds FIM
+    (2) cmds -> . cmds cmd
+    (3) cmds -> . cmd
+    (4) cmd -> . atribuicao
+    (5) cmd -> . impressao
+    (6) cmd -> . operacao
+    (7) cmd -> . repeticao
+    (8) cmd -> . condicional
+    (9) atribuicao -> . FACA var SER numero PONTO
+    (10) impressao -> . MOSTRE var PONTO
+    (11) impressao -> . MOSTRE operacao PONTO
+    (12) impressao -> . MOSTRE numero PONTO
+    (13) operacao -> . SOME var COM var PONTO
+    (14) operacao -> . SOME var COM numero PONTO
+    (15) operacao -> . MULTIPLIQUE var POR var PONTO
+    (16) operacao -> . MULTIPLIQUE var POR numero PONTO
+    (17) repeticao -> . REPITA numero VEZES COLON cmds FIM
+    (18) condicional -> . SE var ENTAO cmds FIM
+    (19) condicional -> . SE var ENTAO cmds SENAO cmds FIM
+
+    FACA            shift and go to state 9
+    MOSTRE          shift and go to state 10
+    SOME            shift and go to state 11
+    MULTIPLIQUE     shift and go to state 12
+    REPITA          shift and go to state 13
+    SE              shift and go to state 14
+
+    cmds                           shift and go to state 48
+    cmd                            shift and go to state 3
+    atribuicao                     shift and go to state 4
+    impressao                      shift and go to state 5
+    operacao                       shift and go to state 6
+    repeticao                      shift and go to state 7
+    condicional                    shift and go to state 8
+
+state 47
+
+    (17) repeticao -> REPITA numero VEZES COLON cmds FIM .
+
+    FACA            reduce using rule 17 (repeticao -> REPITA numero VEZES COLON cmds FIM .)
+    MOSTRE          reduce using rule 17 (repeticao -> REPITA numero VEZES COLON cmds FIM .)
+    SOME            reduce using rule 17 (repeticao -> REPITA numero VEZES COLON cmds FIM .)
+    MULTIPLIQUE     reduce using rule 17 (repeticao -> REPITA numero VEZES COLON cmds FIM .)
+    REPITA          reduce using rule 17 (repeticao -> REPITA numero VEZES COLON cmds FIM .)
+    SE              reduce using rule 17 (repeticao -> REPITA numero VEZES COLON cmds FIM .)
+    $end            reduce using rule 17 (repeticao -> REPITA numero VEZES COLON cmds FIM .)
+    FIM             reduce using rule 17 (repeticao -> REPITA numero VEZES COLON cmds FIM .)
+    SENAO           reduce using rule 17 (repeticao -> REPITA numero VEZES COLON cmds FIM .)
+
+
+state 48
+
+    (19) condicional -> SE var ENTAO cmds SENAO cmds . FIM
+    (2) cmds -> cmds . cmd
+    (4) cmd -> . atribuicao
+    (5) cmd -> . impressao
+    (6) cmd -> . operacao
+    (7) cmd -> . repeticao
+    (8) cmd -> . condicional
+    (9) atribuicao -> . FACA var SER numero PONTO
+    (10) impressao -> . MOSTRE var PONTO
+    (11) impressao -> . MOSTRE operacao PONTO
+    (12) impressao -> . MOSTRE numero PONTO
+    (13) operacao -> . SOME var COM var PONTO
+    (14) operacao -> . SOME var COM numero PONTO
+    (15) operacao -> . MULTIPLIQUE var POR var PONTO
+    (16) operacao -> . MULTIPLIQUE var POR numero PONTO
+    (17) repeticao -> . REPITA numero VEZES COLON cmds FIM
+    (18) condicional -> . SE var ENTAO cmds FIM
+    (19) condicional -> . SE var ENTAO cmds SENAO cmds FIM
+
+    FIM             shift and go to state 49
+    FACA            shift and go to state 9
+    MOSTRE          shift and go to state 10
+    SOME            shift and go to state 11
+    MULTIPLIQUE     shift and go to state 12
+    REPITA          shift and go to state 13
+    SE              shift and go to state 14
+
+    cmd                            shift and go to state 15
+    atribuicao                     shift and go to state 4
+    impressao                      shift and go to state 5
+    operacao                       shift and go to state 6
+    repeticao                      shift and go to state 7
+    condicional                    shift and go to state 8
+
+state 49
+
+    (19) condicional -> SE var ENTAO cmds SENAO cmds FIM .
+
+    FACA            reduce using rule 19 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
+    MOSTRE          reduce using rule 19 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
+    SOME            reduce using rule 19 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
+    MULTIPLIQUE     reduce using rule 19 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
+    REPITA          reduce using rule 19 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
+    SE              reduce using rule 19 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
+    $end            reduce using rule 19 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
+    FIM             reduce using rule 19 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
+    SENAO           reduce using rule 19 (condicional -> SE var ENTAO cmds SENAO cmds FIM .)
 
